@@ -1,0 +1,54 @@
+/* Static image */
+#intro.bg-image .container-fluid {
+  background-image: url('../img/unsplash/10.jpg');
+  background-size: cover;
+}
+
+/* Rain background
+#intro.bg-rain .container-fluid {
+  background-image: url('../img/unsplash/8.jpg');
+  background-size: cover;
+}
+*/
+
+/* Rain background */
+#intro.bg-rain .container-fluid {
+  background-image: url('../img/landing/minimalist.jpg');
+  background-size: cover;
+}
+
+
+/* Snow background */
+#intro #snow {
+  background-image: url('../img/unsplash/9.jpg');
+  background-size: cover;
+}
+
+/* Static color */
+#intro.color .container-fluid {
+  background: #5D815B;
+}
+
+/* Introduction background */
+#introduction .half.bg {
+  background-image: url('../img/unsplash/circle-mypic.jpg');
+  background-size: contain;
+}
+
+/* Services background */
+#services .half.bg {
+  background-image: url('../img/unsplash/teach.jpg');
+  background-size: cover;
+}
+
+/* Portfolio background */
+#portfolio .half.bg {
+  background-image: url('../img/unsplash/work.jpg');
+  background-size: cover;
+}
+
+/* About background */
+#about .half.bg {
+  background-image: url('../img/about.jpg');
+  background-size: cover;
+}
