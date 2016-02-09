@@ -1,34 +1,11 @@
-// var fs = require("fs");
-// var host = "127.0.0.1";
-// var port = 1337;
-// var express = require("express");
-
-// var app = express();
-// app.use(express.static(__dirname + "/public")); //use static files in ROOT/public folder
-
-// app.get("/", function(request, response) { //root dir
-//     response.send("Hello!!");
-// });
-
-// app.listen(port, host);
-
-
-
 var express = require('express');
 var nodemailer = require('nodemailer');
 var bodyParser = require('body-parser')
 var app = express();
-var port = process.env.PORT || 3000;
+var port = 8080;
 
-
-app.use( bodyParser.json() );       // to support JSON-encoded bodies
-app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
-  extended: true
-})); 
-
-// app.use(express.json());       // to support JSON-encoded bodies
-// app.use(express.urlencoded()); // to support URL-encoded bodies
-
+app.use(bodyParser.json());       // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({ extended: true }));     // to support URL-encoded bodies
 /*
     Here we are configuring our SMTP Server details.
     STMP is mail server which is responsible for sending and recieving email.
@@ -72,4 +49,4 @@ app.post('/send', function(req, res) {
 
 app.use(express.static("public"));
 
-app.listen(port);
+app.listen(port, '104.131.129.103');
