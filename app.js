@@ -16,10 +16,18 @@
 
 var express = require('express');
 var nodemailer = require('nodemailer');
-var bodyParser = require('body-parser');
-var jsonParser = bodyParser.json();
+var bodyParser = require('body-parser')
 var app = express();
 var port = process.env.PORT || 3000;
+
+
+app.use( bodyParser.json() );       // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+  extended: true
+})); 
+
+// app.use(express.json());       // to support JSON-encoded bodies
+// app.use(express.urlencoded()); // to support URL-encoded bodies
 
 /*
     Here we are configuring our SMTP Server details.
@@ -28,12 +36,12 @@ var port = process.env.PORT || 3000;
 var smtpTransport = nodemailer.createTransport("SMTP", {
     service: "Gmail",
     auth: {
-        user: "cesar@untoldhq.com",
+        user: "stamos4life69@gmail.com",
         pass: "GreenTea1"
     }
 });
 
-app.get('/',function(req,res) {
+app.get('/', function(req,res) {
     res.sendFile(__dirname + '/views/index.html');
 });
 
@@ -41,27 +49,27 @@ app.use('/assets', express.static(__dirname + '/public'));
 
 app.use(express.static(__dirname + '/public'));
 
-app.post('/send', function(req, res){
+app.post('/send', function(req, res) {
     var mailOptions = {
-        to : req.query.to,
-        subject : req.query.subject,
-        text : req.query.text
+        from: req.body.from, // sender address
+        name: req.body.name,
+        to: 'cesar.r.jimenez@gmail.com', // list of receivers
+        subject: req.body.subject, // Subject line
+        text: req.body.text, // plaintext body
+    };
+    console.log(mailOptions);
+    smtpTransport.sendMail(mailOptions, function(error, response) {
+        if (error) {
+            console.log(error);
+            res.end("error");
+        } else {
+            console.log("Message sent: " + response.message);
+            res.end("sent");
         }
-  console.log(mailOptions);
-  smtpTransport.sendMail(mailOptions, function(error, response) {
-    if(error) {
-      console.log(error);
-      res.end("error");
-    } else {
-      console.log("Message sent: " + response.message);
-      res.end("sent");
-    }
-  });
+    });
 });
 
 
 app.use(express.static("public"));
 
-app.listen(port, function() {
-  console.log("Express Started on Port 3000");
-});
+app.listen(port);
