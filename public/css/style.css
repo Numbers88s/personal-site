@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'Garamond';
-  src: url('fonts/Adobe-Garamond-Pro_2012.ttf')  format('truetype'); /* Safari, Android, iOS */
+  src: url('/assets/fonts/Adobe-Garamond-Pro_2012.ttf')  format('truetype'); /* Safari, Android, iOS */
 }
 
 @font-face{
   font-family:'Montserrat-Regular';
-  src: url('fonts/Montserrat-Regular.otf') format('opentype');
+  src: url('/assets/fonts/Montserrat-Regular.otf') format('opentype');
 }
 
 div.header p,
@@ -40,4 +40,10 @@ figcaption {
   background-color: rgba(0, 0, 0, 0.48);
   border-top-right-radius: 45px;
 
+}
+
+.navbar-abel a.navbar-brand {
+  font-family: 'Montserrat-Regular';
+  color: #666;
+  font-size: 21px;
 }
